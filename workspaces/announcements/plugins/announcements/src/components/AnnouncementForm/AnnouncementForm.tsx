@@ -26,18 +26,18 @@ import { Announcement } from '@backstage-community/plugin-announcements-common';
 import CategoryInput from './CategoryInput';
 import OnBehalfTeamDropdown from './OnBehalfTeamDropdown';
 import TagsInput from './TagsInput';
-import {
-  Box,
-  Button,
-  Divider,
-  FormControlLabel,
-  FormGroup,
-  Grid,
-  Switch,
-  TextField,
-  Typography,
-} from '@material-ui/core';
-import SaveAltIcon from '@material-ui/icons/SaveAlt';
+
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormGroup from '@mui/material/FormGroup';
+import Grid from '@mui/material/Grid';
+import Switch from '@mui/material/Switch';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+
+import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import { DateTime } from 'luxon';
 import slugify from 'slugify';
 
