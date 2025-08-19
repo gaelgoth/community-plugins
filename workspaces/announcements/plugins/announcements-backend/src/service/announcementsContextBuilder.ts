@@ -18,6 +18,7 @@ import {
   PersistenceContext,
 } from './persistence/persistenceContext';
 import {
+  AuditorService,
   DatabaseService,
   HttpAuthService,
   LoggerService,
@@ -41,6 +42,7 @@ export type AnnouncementsContext = {
   permissions: PermissionsService;
   permissionsRegistry: PermissionsRegistryService;
   persistenceContext: PersistenceContext;
+  auditor: AuditorService;
   signals?: SignalsService;
 };
 
@@ -70,6 +72,7 @@ export const buildAnnouncementsContext = async ({
   permissions,
   permissionsRegistry,
   signals,
+  auditor,
 }: AnnouncementsContextOptions): Promise<AnnouncementsContext> => {
   return {
     config,
@@ -80,5 +83,6 @@ export const buildAnnouncementsContext = async ({
     permissionsRegistry,
     persistenceContext: await initializePersistenceContext(database),
     signals,
+    auditor,
   };
 };

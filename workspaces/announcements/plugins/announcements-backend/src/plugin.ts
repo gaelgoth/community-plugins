@@ -41,6 +41,7 @@ export const announcementsPlugin = createBackendPlugin({
         permissions: coreServices.permissions,
         permissionsRegistry: coreServices.permissionsRegistry,
         signals: signalsServiceRef,
+        auditor: coreServices.auditor,
       },
       async init({
         config,
@@ -52,6 +53,7 @@ export const announcementsPlugin = createBackendPlugin({
         permissions,
         permissionsRegistry,
         signals,
+        auditor,
       }) {
         const context = await buildAnnouncementsContext({
           config,
@@ -62,6 +64,7 @@ export const announcementsPlugin = createBackendPlugin({
           permissions,
           permissionsRegistry,
           signals,
+          auditor,
         });
 
         permissionsRegistry.addPermissions(

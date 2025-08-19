@@ -31,6 +31,7 @@ describe('buildAnnouncementsContext', () => {
     const httpAuth = mockServices.httpAuth();
     const permissionsRegistry = mockServices.permissionsRegistry.mock();
     const events = mockServices.events();
+    const auditor = mockServices.auditor.mock();
 
     const signals: SignalsService = {
       publish: jest.fn(),
@@ -45,6 +46,7 @@ describe('buildAnnouncementsContext', () => {
       permissions,
       permissionsRegistry,
       signals,
+      auditor,
     });
 
     const persistenceContext = await initializePersistenceContext(database);
@@ -58,6 +60,7 @@ describe('buildAnnouncementsContext', () => {
       permissionsRegistry,
       persistenceContext,
       signals,
+      auditor,
     });
   });
 });
