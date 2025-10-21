@@ -83,7 +83,7 @@
   },
   "devDependencies": {
     "@backstage/cli": "^0.34.4",
-    "@backstage/dev-utils": "^1.1.15",
+    "@backstage/dev-utils": "^1.1.16",
     "@backstage/frontend-test-utils": "^0.4.0",
     "@backstage/plugin-signals": "^0.0.24",
     "@backstage/test-utils": "^1.7.12",
