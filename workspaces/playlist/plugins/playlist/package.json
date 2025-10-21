@@ -62,7 +62,7 @@
   "devDependencies": {
     "@backstage/cli": "^0.34.4",
     "@backstage/core-app-api": "^1.19.1",
-    "@backstage/dev-utils": "^1.1.15",
+    "@backstage/dev-utils": "^1.1.16",
     "@backstage/plugin-search-common": "^1.2.20",
     "@backstage/test-utils": "^1.7.12",
     "@testing-library/dom": "^10.0.0",
