@@ -21,28 +21,8 @@ import {
 } from '@backstage/plugin-search-common';
 import { HighlightedSearchResultText } from '@backstage/plugin-search-react';
 import { useAnnouncementsTranslation } from '@backstage-community/plugin-announcements-react';
-import {
-  makeStyles,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Typography,
-} from '@material-ui/core';
+import { Flex, List, ListRow, Text } from '@backstage/ui';
 import { RiMegaphoneLine } from '@remixicon/react';
-
-const useStyles = makeStyles({
-  createdAt: {
-    display: 'block',
-    marginTop: '0.2rem',
-    marginBottom: '0.8rem',
-  },
-  excerpt: {
-    lineHeight: '1.55',
-  },
-  itemText: {
-    wordBreak: 'break-all',
-  },
-});
 
 type IndexableAnnouncement = IndexableDocument & {
   createdAt: string;
@@ -59,7 +39,6 @@ export const AnnouncementSearchResultListItem = ({
   result,
   highlight,
 }: AnnouncementSearchResultProps) => {
-  const classes = useStyles();
   const { t } = useAnnouncementsTranslation();
 
   if (!result) {
@@ -84,12 +63,19 @@ export const AnnouncementSearchResultListItem = ({
 
   const excerpt = (
     <>
-      <Typography component="span" className={classes.createdAt}>
+      <Text
+        as="span"
+        style={{
+          display: 'block',
+          marginTop: '0.2rem',
+          marginBottom: '0.8rem',
+        }}
+      >
         {`${t('announcementSearchResultListItem.published')} `}
-        <Typography component="span" title={document.createdAt}>
+        <Text as="span" title={document.createdAt}>
           {DateTime.fromISO(document.createdAt).toRelative()}
-        </Typography>
-      </Typography>
+        </Text>
+      </Text>
       <>
         {highlight?.fields.text ? (
           <HighlightedSearchResultText
@@ -105,16 +91,24 @@ export const AnnouncementSearchResultListItem = ({
   );
 
   return (
-    <ListItem alignItems="center">
-      <ListItemIcon title={t('announcementSearchResultListItem.announcement')}>
-        <RiMegaphoneLine />
-      </ListItemIcon>
-      <ListItemText
-        primary={title}
-        secondary={excerpt}
-        className={classes.itemText}
-        primaryTypographyProps={{ variant: 'h6' }}
-      />
-    </ListItem>
+    <List aria-label={t('announcementSearchResultListItem.announcement')}>
+      <ListRow
+        id={result.location}
+        icon={<RiMegaphoneLine />}
+        textValue={result.title}
+      >
+        <Flex direction="column" style={{ wordBreak: 'break-all' }}>
+          <Text variant="title-small">{title}</Text>
+          <Text
+            as="span"
+            variant="body-small"
+            color="secondary"
+            style={{ lineHeight: '1.55' }}
+          >
+            {excerpt}
+          </Text>
+        </Flex>
+      </ListRow>
+    </List>
   );
 };
